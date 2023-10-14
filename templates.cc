@@ -63,10 +63,33 @@ int main(){
         myVec<char> c4 {5};
         c4 = move(c2);
         cout << "Move assignment operator: c4=" << c4 << endl;
+        cout << "\n\nTesting overloaded + operator for templated vector class\n\n" << endl;
+        myVec<double> d1 (3);
+        d1[0] = 1.2; d1[1] = 2.5; d1[2] = 3.6;
+        cout << i1 << " + " << d1 << endl;
+        auto result = i1 + d1;
+        cout << "Result = " << result << endl;
+        cout << "\n\nNow testing adding char to double\n\n" << endl;
+        myVec<char> c5 (3);
+        c5[0] = 'a'; c5[1] = 'b'; c5[2] = 'c';
+        auto result2 = d1 + c5;
+        cout << c5 << " + " << endl << d1 << endl;
+        cout << "Result = " << endl << result2 << endl;
+        myVec<string> s1 (3);
+        s1[0] = "John "; s1[1] = "Jane "; s1[2] = "Bill ";
+        myVec<string> s2 (3);
+        s2[0] = "Doe "; s2[1] = "Smith "; s2[2] = "Jones";
+        auto result3 = s1 + s2;
+        cout << s1 << " + " << s2 << " = " << result3 << endl; 
+        auto r4 = s1 + c5;
+        cout << s1 << " + " << c5 << " = " << r4 << endl;
     }
 
     catch(range_error &e){
         cout << "Invalid index: " << e.what() << endl;
+    }
+    catch(invalid_argument &e){
+        cout << "Invalid argument: " << e.what() << endl;
     }
 
     

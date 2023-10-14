@@ -19,11 +19,9 @@ public:
     // Constructor - allocates memory for n entries of type T
     myVec(int size) : n {size}, data {new T [size]} {
         fill(data, data+n, 0);
-        cout << "Allocated for vector of type " << typeid(T).name() << " and size " << n << endl;
     }
     // Custom destructor to hanle dynamic memory allocation
     ~myVec(){
-        cout << "Destroying vector of type " << typeid(T).name() << " and size " << n << endl;
         delete[] data;
     }
 
@@ -103,4 +101,16 @@ T& myVec<T>::operator[](int i) const {
     return data[i];
 }
 
-
+// Declare an addition operator - should use decltype for template type deduction
+template<typename T, typename U>
+myVec<decltype(T{}+U{})> operator+(const myVec<T>& v1, myVec<U>& v2){
+    if (v1.getSize() != v2.getSize()){
+        throw invalid_argument("Cannot add vectors of different sizes");
+        return myVec<decltype(T{}+U{})> (0);
+    }
+    myVec<decltype(T{} + U{})> result (v1.getSize());
+    for (int i=0; i<v1.getSize(); ++i){
+        result[i] = v1[i] + v2[i];
+    }
+    return result;
+}

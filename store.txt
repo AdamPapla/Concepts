@@ -1,0 +1,2 @@
+I think the probability of Adam who is aged 23 going the full way and winning: 0.229502
+Probability of Brian aged 25 winning: 0.055475Also perhaps the probability of Charlie who is aged 34 beating out the competitors and winning: 0.181186

@@ -1,6 +1,7 @@
 // Adam Graham
 // Templated class definition for a vector type container. 
-
+#ifndef TEMPLATES_HH_
+#define TEMPLATES_HH_
 #include <iostream>
 #include <string>
 #include <algorithm>
@@ -114,3 +115,4 @@ myVec<decltype(T{}+U{})> operator+(const myVec<T>& v1, myVec<U>& v2){
     }
     return result;
 }
+#endif
